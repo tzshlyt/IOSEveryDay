@@ -13,3 +13,8 @@
 	
 	未完成动画效果
 	
+- Day3
+   
+   tableviewcell 从左右划入
+
+	
