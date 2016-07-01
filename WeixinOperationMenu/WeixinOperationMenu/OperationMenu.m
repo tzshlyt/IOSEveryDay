@@ -11,7 +11,7 @@
 @property (nonatomic, strong) UIButton *likeButton;
 @property (nonatomic, strong) UIButton *commentButton;
 @property (nonatomic, strong) UIView *centerLine;
-
+@property (nonatomic, assign) CGRect rect;
 @end
 
 @implementation OperationMenu
@@ -21,6 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];
+        self.rect = frame;
     }
     return self;
 }
@@ -76,14 +77,13 @@
 
 - (void)setShow:(BOOL)show {
     _show = show;
-    
-    [UIView animateWithDuration:0.5 animations:^{
+     [UIView animateWithDuration:0.2 animations:^{
         if (!show) {
-            self.bounds = CGRectMake(0, 0, 0, 0);
+            self.frame = CGRectMake(self.rect.origin.x + self.rect.size.width, self.rect.origin.y, 0, self.rect.size.height);
         }else {
-            self.bounds = CGRectMake(0, 0, 220, 40);
+            self.frame = self.rect;
         }
-    }];
+     }];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
